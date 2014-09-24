@@ -85,21 +85,21 @@ var picZoomer = function(container, data, colours)
                     currentAlpha: 1
                 }
 
-                imagesLoader.push(current[1]);
+                if (imagesLoader.indexOf(current[1]) == -1)
+                    imagesLoader.push(current[1]);
             }
         }
 
         /**
          * Image preloader
          */
+        ctx.fillStyle = loaderBack;
+        ctx.fillRect(0,0, self.w, self.h);
         imagesLoader.forEach(function(el) {
             imageTemp = new Image;
             imageTemp.src = el;
             imageTemp.onload = function() {
                 imagesLoaded++;
-
-                ctx.fillStyle = loaderBack;
-                ctx.fillRect(0,0, self.w, self.h);
 
                 ctx.fillStyle = barColor;
                 ctx.fillRect(
