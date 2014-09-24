@@ -327,8 +327,8 @@ var picZoomer = function(container, data, colours)
      * Simple cursor tracker
      */
     cont.onmousemove = function(e) {
-        mousex = e.offsetX;
-        mousey = e.offsetY;
+        mousex = e.offsetX == undefined ? e.layerX : e.offsetX;
+        mousey = e.offsetY == undefined ? e.layerY : e.offsetY;
     };
     cont.onmouseout = function(e) {
         mousex = -100;
